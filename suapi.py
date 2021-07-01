@@ -18,22 +18,21 @@ LBL_TIPO_FREQ = "tipo de frequencia"
 LBL_UPDATED = "updated"
 LBL_INICIO = "inicio"
 
-HOUR = { "07:10":312,
-         "08:00":313,
-         "08:50":314,
-         "09:55":315,
-         "10:45":316,
-         "13:10":307,
-         "14:00":308,
-         "14:50":309,
-         "15:55":310,
-         "16:45":311,
-         "17:20":346,
-         "18:10":302,
-         "19:00":303,
-         "19:50":304,
-         "20:55":305,
-         "21:45":306,
+HOUR = { "07:30":238,
+         "08:20":239,
+         "09:10":240,
+         "10:20":241,
+         "11:10":242,
+         "13:00":232,
+         "13:50":233,
+         "14:40":234,
+         "15:50":235,
+         "16:40":236,
+         "18:10":332,
+         "19:00":228,
+         "19:50":229,
+         "20:50":230,
+         "21:40":231,
 }
 
 
@@ -174,7 +173,7 @@ def map_data_to_payload(data, professor_diario, csrftoken = None):
     payload['quantidade_aula_teorica'] = data[LBL_QTDD_TEORICA]
     payload['quantidade_aula_pratica'] = data[LBL_QTDD_PRATICA]
     payload['quantidade'] = str(int(data[LBL_QTDD_TEORICA]) + int(data[LBL_QTDD_PRATICA]))
-    payload['etapa'] = 1
+    payload['etapa'] = 2
     payload['data'] = data[LBL_DATE]
     payload['horario_inicio'] = get_hour_code(data[LBL_INICIO])
     payload['conteudo'] = data[LBL_CONTEUDO]
@@ -211,7 +210,7 @@ def adiciona_aula(id_diario, data, session):
     #print(session.cookies.get_dict())
     #r = session.post(url, data=payload, headers=session.headers.update({'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'}))
     r = session.post(url, data=payload, allow_redirects=True) 
-    print(r.request.headers)
+    #print(r.request.headers)
     print(r.status_code)
     print(r.request)
 
